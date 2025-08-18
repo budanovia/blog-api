@@ -55,12 +55,12 @@ async def get_article(article_id: int, db: Session = Depends(get_db)):
 # delete article
 @app.delete("/articles/{article_id}")
 async def delete_article(article_id: int, db: Session = Depends(get_db)):
-    article = db.query(models.Article).filter(models.Article.id == article_id)
+    query = db.query(models.Article).filter(models.Article.id == article_id)
 
-    if article.first() == None:
+    if query.first() == None:
         raise HTTPException(status_code=404, detail="Article not found")
 
-    article.delete(synchronize_session=False)
+    query.delete(synchronize_session=False)
     db.commit()
 
 # update article
