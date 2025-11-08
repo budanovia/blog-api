@@ -8,7 +8,8 @@ from database import engine, SessionLocal, get_db
 #from typing import Optional
 from routers import article, user, auth
 
-models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine)
+# ^ no longer needed because alembic will create the tables for us
 
 app = FastAPI()
 
