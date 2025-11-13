@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     algorithm: str
     access_token_expire_minutes: int
 
+    postgresql_test_database_uri: str
+    postgresql_admin_database_uri: str
+
     class Config:
         env_file = ".env"
 
