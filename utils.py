@@ -1,12 +1,11 @@
 import bcrypt
-from openai import OpenAI
+#from openai import OpenAI
+from openai import AsyncOpenAI
 from config import settings
 
-client = OpenAI(api_key=settings.open_api_key)
-#from openai import AsyncOpenAI
+client = AsyncOpenAI(api_key=settings.open_api_key)
+#client = OpenAI(api_key=settings.open_api_key)
 
-
-#client = AsyncOpenAI(api_key=settings.open_api_key)
 
 def hash_password(password: str) -> str:
     bytePwd = password.encode('utf-8')
@@ -21,7 +20,7 @@ def verify_password(unhashed_password: str, hashed_password: str):
     bytePwd2 = hashed_password.encode('utf-8')
     return bcrypt.checkpw(bytePwd1, bytePwd2)
 
-def generate_tags(input):
+async def generate_tags(input):
     messages = [
         {"role": "user",
          "content": """Generate three single words based on the content and feeling of the inputted text, these will be the tags that are assigned to the text. Your output should 
@@ -29,7 +28,7 @@ def generate_tags(input):
     ]
 
     messages.append({"role": "user", "content": f"{input}"})
-    completion = client.chat.completions.create(model="gpt-3.5-turbo",
+    completion = await client.chat.completions.create(model="gpt-3.5-turbo",
     messages=messages)
     reply = completion.choices[0].message.content
     return reply

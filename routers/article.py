@@ -97,7 +97,7 @@ async def create_article(article: schemas.ArticleCreate, db: Session = Depends(g
     # then pass into models.Article so the article_tag association table is created
     
     #tags = article.tags
-    tags = utils.generate_tags(article.content)
+    tags = await utils.generate_tags(article.content)
     tags = ast.literal_eval(tags)
     tags = [n.strip() for n in tags]
     print(tags)
