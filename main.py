@@ -6,7 +6,7 @@ import models
 #import schemas
 from database import engine, SessionLocal, get_db
 #from typing import Optional
-from routers import article, user, auth
+from routers import article, user, auth, tag
 
 models.Base.metadata.create_all(bind=engine)
 # ^ no longer needed because alembic will create the tables for us
@@ -15,6 +15,7 @@ app = FastAPI()
 
 app.include_router(article.router)
 app.include_router(user.router)
+app.include_router(tag.router)
 app.include_router(auth.router)
 
 @app.get("/")

@@ -16,6 +16,8 @@ class Settings(BaseSettings):
     postgresql_test_database_uri: str
     postgresql_admin_database_uri: str
 
+    open_api_key: str
+
     class Config:
         env_file = ".env"
 

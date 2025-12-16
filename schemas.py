@@ -31,21 +31,22 @@ class UserForArticleOut(BaseModel):
 class ArticleBase(BaseModel):
     title: str
     content: str
-    tag: Optional[str] = None
     # user_id: int  --> not needed anymore because of get_current_user() Dependency
 
 class ArticleCreate(ArticleBase):
+    #tags: List[str]
     pass
 
 class ArticleUpdate(BaseModel):
     title: Optional[str] = None
     content: Optional[str] = None
-    tag: Optional[str] = None
+    #tag: Optional[str] = None
 
 class ArticleOut(ArticleBase):
     id: int
     created_at: datetime.datetime
     user: UserForArticleOut
+    #tags: List[str]
     
     class Config:
         from_attributes = True
@@ -55,6 +56,13 @@ class ArticleForUserOut(ArticleBase):
     
     class Config:
         from_attributes = True
+
+class TagCreate(BaseModel):
+    name: str
+
+class TagOut(BaseModel):
+    id: int
+    name: str
 
 #UserOut.update_forward_refs(ArticleOut=ArticleOut)
 ArticleOut.update_forward_refs()
