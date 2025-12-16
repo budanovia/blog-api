@@ -1,9 +1,11 @@
 import bcrypt
-import openai
-#from openai import AsyncOpenAI
+from openai import OpenAI
 from config import settings
 
-openai.api_key = settings.open_api_key
+client = OpenAI(api_key=settings.open_api_key)
+#from openai import AsyncOpenAI
+
+
 #client = AsyncOpenAI(api_key=settings.open_api_key)
 
 def hash_password(password: str) -> str:
@@ -27,10 +29,8 @@ def generate_tags(input):
     ]
 
     messages.append({"role": "user", "content": f"{input}"})
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=messages
-    )
+    completion = client.chat.completions.create(model="gpt-3.5-turbo",
+    messages=messages)
     reply = completion.choices[0].message.content
     return reply
     '''messages.append({"role": "user", "content": f"{input}"})
