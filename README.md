@@ -20,7 +20,7 @@ A production-ready, asynchronous REST API built with **FastAPI**. This system al
 *   **Security:** Full OAuth2 flow with **JWT (JSON Web Tokens)** and Bcrypt password hashing.
 *   **Database Migrations:** Schema versioning and management using **Alembic**.
 *   **Infrastructure:** Multi-container orchestration with **Docker Compose** and **NGINX** as a reverse proxy.
-*   **CI/CD:** Automated testing and linting (Flake8) via GitHub Actions.
+*   **CI/CD:** Automated testing via GitHub Actions.
 
 ---
 
@@ -81,9 +81,13 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 OPEN_API_KEY=your_openai_api_key
 ```
 
-**3. Run the Application**
+**3. Build and Run the Application**
 ```bash
-docker-compose up --build
+# Build the images
+sudo docker-compose build
+
+# Spin up the containers with the environment file
+docker-compose --env-file .env up
 ```
 The API will be live at `http://localhost:8000`.
 
