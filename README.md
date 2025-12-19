@@ -1,4 +1,4 @@
-# 📝 AI-Powered Blogging Platform API
+# 📝 Blogging Platform API
 
 [![Python application](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml/badge.svg)](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml)
 ![Python](https://img.shields.io/badge/Python-3.10-blue?style=flat&logo=python)
