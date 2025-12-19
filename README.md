@@ -118,4 +118,3 @@ pytest
 ```
 
 ---
-*Developed as a demonstration of production-level backend engineering.*
