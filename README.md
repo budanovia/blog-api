@@ -1,72 +1,55 @@
-📝 AI-Powered Blogging Platform API
-![alt text](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml/badge.svg)
+# 📝 AI-Powered Blogging Platform API
 
-![alt text](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)
+[![Python application](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml/badge.svg)](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml)
+![Python](https://img.shields.io/badge/Python-3.10-blue?style=flat&logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker)
+![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx)
 
-![alt text](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+A production-ready, asynchronous REST API built with **FastAPI**. This system allows users to manage articles with automated semantic tagging via **OpenAI**, high-performance caching via **Redis**, and a fully containerized deployment architecture.
 
-![alt text](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
+---
 
-![alt text](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-A high-performance, asynchronous backend system built with FastAPI. This platform features automated content classification via OpenAI, multi-level caching with Redis, and a fully containerized deployment pipeline.
-🚀 Core Architecture
-Asynchronous Processing: Utilizes async/await for database operations and external API calls (OpenAI).
-Smart Caching: Implements a Cache-Aside pattern with Redis to reduce PostgreSQL read latency for popular articles.
-AI Integration: Automatically generates semantic tags for articles using GPT-3.5 based on content analysis.
-Security: OAuth2 with JWT Bearer tokens and password hashing via Bcrypt.
-DevOps Ready: Nginx reverse proxy, Docker orchestration, and GitHub Actions CI/CD.
-🛠️ Tech Stack
-Component	Technology
-Framework	FastAPI (Python 3.10)
-Database	PostgreSQL + SQLAlchemy ORM
-Caching	Redis
-Migrations	Alembic
-Proxy/Server	Nginx + Gunicorn/Uvicorn
-AI SDK	OpenAI (Asynchronous)
-Validation	Pydantic v2
-📂 Project Structure
-code
-Bash
-├── alembic/           # Database migrations
-├── nginx/             # Reverse proxy config
-├── routers/           # API Route controllers
-│   ├── article.py     # Caching logic & AI tagging
-│   ├── auth.py        # JWT authentication
-│   └── user.py        # User management
-├── tests/             # Pytest suite (Integration/Unit)
-├── models.py          # SQLAlchemy Relationship models
-├── schemas.py         # Pydantic data validation
-├── oauth2.py          # Authentication middleware
-└── docker-compose.yml # Multi-container setup
-⚡ Quick Start (Docker)
-Clone & Env Setup
-code
-Bash
-git clone https://github.com/budanovia/blog-api.git
-cd blog-api
-touch .env # Populate with variables from config.py
-Run with Docker Compose
-code
-Bash
-docker-compose up --build
-The API will be available at http://localhost:8000 with auto-generated docs at /docs.
-🔍 Key Logic Highlights
-AI Auto-Tagging (utils.py)
-When a user posts an article, the system sends the content to OpenAI's API to generate a list of strings, which are then mapped to the Many-to-Many Tag model in the database.
-Redis Cache Implementation (article.py)
-code
-Python
-# Pseudo-logic implemented in the Article router:
-cached_data = redis_client.get(f"article_id:{id}")
-if cached_data:
-    return json.loads(cached_data)
+### 🚀 Key Features
 
-article = db.query(models.Article).filter(id).first()
-redis_client.setex(cache_key, 600, article_json) # 10 min TTL
-Database Relationships
-User ↔ Article: One-to-Many
-Article ↔ Tag: Many-to-Many (via article_tag association table)
-🧪 CI/CD & Testing
-The project includes a robust testing suite that creates a temporary PostgreSQL database for every test run to ensure isolation.
-Tools: pytest, httpx, TestClient
-Automation: GitHub Actions runs flake8 for linting and pytest on every pull request to main.
+*   **AI-Driven Auto-Tagging:** Integrates **OpenAI GPT-3.5** to analyze article content and automatically generate categorized tags.
+*   **Performance Optimization:** Implements **Redis** caching (Cache-Aside pattern) to reduce PostgreSQL read latency.
+*   **Relational Data Modeling:** Managed via **SQLAlchemy** with One-to-Many (Users/Articles) and Many-to-Many (Articles/Tags) relationships.
+*   **Security:** Full OAuth2 flow with **JWT (JSON Web Tokens)** and Bcrypt password hashing.
+*   **Database Migrations:** Schema versioning and management using **Alembic**.
+*   **Infrastructure:** Multi-container orchestration with **Docker Compose** and **NGINX** as a reverse proxy.
+*   **CI/CD:** Automated testing and linting (Flake8) via GitHub Actions.
+
+---
+
+### 🛠️ Tech Stack
+
+| Category | Technology |
+| :--- | :--- |
+| **Language** | Python 3.10+ |
+| **Framework** | FastAPI |
+| **Database** | PostgreSQL |
+| **Caching** | Redis |
+| **ORM** | SQLAlchemy |
+| **Migrations** | Alembic |
+| **AI SDK** | OpenAI (Async) |
+| **Web Server** | Nginx / Uvicorn |
+| **Testing** | Pytest |
+
+---
+
+### 📂 Project Structure
+
+```text
+├── alembic/            # Database migration scripts
+├── nginx/              # Nginx reverse proxy configuration
+├── routers/            # API Endpoints (Articles, Users, Auth, Tags)
+├── tests/              # Pytest suite & Test configuration
+├── config.py           # Pydantic-based environment management
+├── database.py         # SQLAlchemy engine setup
+├── models.py           # SQLAlchemy relational models
+├── schemas.py          # Pydantic data validation
+├── oauth2.py           # JWT Authentication logic
+└── docker-compose.yml  # Multi-container orchestration
