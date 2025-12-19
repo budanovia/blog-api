@@ -53,3 +53,14 @@ A production-ready, asynchronous REST API built with **FastAPI**. This system al
 ├── schemas.py          # Pydantic data validation
 ├── oauth2.py           # JWT Authentication logic
 └── docker-compose.yml  # Multi-container orchestration
+
+---
+
+### ⚡ Installation & Setup (Docker)
+
+The easiest way to run the application is using **Docker Compose**, which spins up the API, PostgreSQL database, and Redis cache automatically.
+
+**1. Clone the repository**
+```bash
+git clone https://github.com/budanovia/blog-api.git
+cd blog-api
