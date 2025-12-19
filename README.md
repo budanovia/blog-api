@@ -1,4 +1,4 @@
-# 📝 Blogging Platform API
+# Blogging Platform API
 
 [![Python application](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml/badge.svg)](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml)
 ![Python](https://img.shields.io/badge/Python-3.10-blue?style=flat&logo=python)
@@ -12,7 +12,7 @@ A production-ready, asynchronous REST API built with **FastAPI**. This system al
 
 ---
 
-### 🚀 Key Features
+### Key Features
 
 *   **AI-Driven Auto-Tagging:** Integrates **OpenAI GPT-3.5** to analyze article content and automatically generate categorized tags.
 *   **Performance Optimization:** Implements **Redis** caching (Cache-Aside pattern) to reduce PostgreSQL read latency.
@@ -24,7 +24,7 @@ A production-ready, asynchronous REST API built with **FastAPI**. This system al
 
 ---
 
-### 🛠️ Tech Stack
+### Tech Stack
 
 | Category | Technology |
 | :--- | :--- |
@@ -40,7 +40,7 @@ A production-ready, asynchronous REST API built with **FastAPI**. This system al
 
 ---
 
-### 📂 Project Structure
+### Project Structure
 
 ```text
 ├── alembic/            # Database migration scripts
@@ -57,7 +57,7 @@ A production-ready, asynchronous REST API built with **FastAPI**. This system al
 
 ---
 
-### ⚡ Installation & Setup (Docker)
+### Installation & Setup (Docker)
 
 The easiest way to run the application is using **Docker Compose**, which spins up the API, PostgreSQL database, and Redis cache automatically.
 
@@ -93,7 +93,7 @@ The API will be live at `http://localhost:8000`.
 
 ---
 
-### 📖 API Documentation
+### API Documentation
 
 Once the server is running, you can access the interactive documentation to test the endpoints directly from your browser:
 
@@ -108,7 +108,7 @@ Once the server is running, you can access the interactive documentation to test
 
 ---
 
-### 🧪 Running Tests
+### Running Tests
 
 This project uses **Pytest** for automated testing. The test suite includes a specialized `conftest.py` that sets up a clean, isolated PostgreSQL database for every test run to ensure production data remains untouched.
 
