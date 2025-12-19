@@ -1,13 +1,5 @@
 # Blogging Platform API
 
-[![Python application](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml/badge.svg)](https://github.com/budanovia/blog-api/actions/workflows/python-app.yml)
-![Python](https://img.shields.io/badge/Python-3.10-blue?style=flat&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker)
-![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat&logo=nginx)
-
 A production-ready, asynchronous REST API built with **FastAPI**. This system allows users to manage articles with automated semantic tagging via **OpenAI**, high-performance caching via **Redis**, and a fully containerized deployment architecture.
 
 ---
