@@ -53,6 +53,7 @@ A production-ready, asynchronous REST API built with **FastAPI**. This system al
 ├── schemas.py          # Pydantic data validation
 ├── oauth2.py           # JWT Authentication logic
 └── docker-compose.yml  # Multi-container orchestration
+```
 
 ---
 
@@ -64,3 +65,53 @@ The easiest way to run the application is using **Docker Compose**, which spins 
 ```bash
 git clone https://github.com/budanovia/blog-api.git
 cd blog-api
+```
+
+**2. Configure Environment Variables**
+Create a `.env` file in the project root and add your credentials:
+```env
+DATABASE_HOSTNAME=db
+DATABASE_PORT=5432
+DATABASE_PASSWORD=your_secure_password
+DATABASE_NAME=postgres
+DATABASE_USERNAME=postgres
+SECRET_KEY=your_jwt_secret_key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+OPEN_API_KEY=your_openai_api_key
+```
+
+**3. Run the Application**
+```bash
+docker-compose up --build
+```
+The API will be live at `http://localhost:8000`.
+
+---
+
+### 📖 API Documentation
+
+Once the server is running, you can access the interactive documentation to test the endpoints directly from your browser:
+
+*   **Swagger UI:** [http://localhost:8000/docs](http://localhost:8000/docs)
+*   **ReDoc:** [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+#### **Key Endpoints:**
+*   `POST /user/` - Register a new user account.
+*   `POST /login/` - Authenticate and receive a JWT Bearer token.
+*   `POST /articles/` - Create an article (triggers OpenAI auto-tagging).
+*   `GET /articles/{id}` - Retrieve an article (checks Redis cache first).
+
+---
+
+### 🧪 Running Tests
+
+This project uses **Pytest** for automated testing. The test suite includes a specialized `conftest.py` that sets up a clean, isolated PostgreSQL database for every test run to ensure production data remains untouched.
+
+```bash
+# To run tests locally
+pytest
+```
+
+---
+*Developed as a demonstration of production-level backend engineering.*
