@@ -14,7 +14,10 @@ import redis
 from fastapi.encoders import jsonable_encoder
 import json
 
-redis_client = redis.Redis(host='localhost', port=6379, db=0)
+#for when testing locally:
+#redis_client = redis.Redis(host='localhost', port=6379, db=0)
+#for docker-compose:
+redis_client = redis.Redis(host='cache', port=6379, password='eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81', db=0)
 
 router = APIRouter(
     prefix = "/articles",
